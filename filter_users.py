@@ -1,9 +1,25 @@
 import json
 
 
+def get_users():
+    """
+    Reads the data from the 'users.json' file and returns it as a list of dictionaries.
+
+    Returns:
+        list: A list of user dictionaries loaded from the 'users.json' file.
+    """
+    with open("users.json", "r", encoding='utf-8') as file:
+        return json.load(file)
+
+
 def filter_users_by_name(name):
-    with open("users.json", "r") as file:
-        users = json.load(file)
+    """
+    Filters and prints users from the 'users.json' file by matching the name.
+
+    Parameters:
+        name (str): The name to search for (case-insensitive).
+    """
+    users = get_users()
 
     filtered_users = [user for user in users if user["name"].lower() == name.lower()]
 
@@ -12,8 +28,13 @@ def filter_users_by_name(name):
 
 
 def filter_users_by_age(age):
-    with open("users.json", "r") as file:
-        users = json.load(file)
+    """
+    Filters and prints users from the 'users.json' file by matching the age.
+
+    Parameters:
+        age (int): The age to search for.
+    """
+    users = get_users()
 
     filtered_users = [user for user in users if user["age"] == age]
 
@@ -22,8 +43,13 @@ def filter_users_by_age(age):
 
 
 def filter_users_by_email(email):
-    with open("users.json", "r") as file:
-        users = json.load(file)
+    """
+    Filters and prints users from the 'users.json' file by matching the email.
+
+    Parameters:
+        email (str): The email to search for (case-insensitive).
+    """
+    users = get_users()
 
     filtered_users = [user for user in users if user["email"].lower() == email.lower()]
 
